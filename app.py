@@ -27,9 +27,10 @@ def calculate_square_root():
 def calculate_factorial():
     try:
         expression = entry_var.get()
-        result = math.factorial(int(expression))
+        result = math.factorial(int(float(expression)))
         entry_var.set(result)
     except Exception as e:
+        print(e)
         entry_var.set("Error")
 
 def add_decimal_point():
@@ -40,14 +41,13 @@ def backspace():
     current_text = entry_var.get()
     entry_var.set(current_text[:-1])
 
-def create_button(root, text, row, col, command):
-    return Button(root, text=text, padx=15, pady=15, font=('Arial', 12), command=command)
+def create_button(root, text, command):
+    return Button(root, text=text, padx=10, pady=10, font=('Arial', 12), command=command)
 
 root = Tk()
 root.title("Calculator")
-root.geometry('300x400')
-root.minsize(300,75)
-root.maxsize(500,600)
+root.geometry('300x380')
+root.resizable(False,False)
 entry_var = StringVar()
 entry_var.set("")
 
@@ -66,7 +66,7 @@ buttons_data = [
 
 for data in buttons_data:
     button_text, row_val, col_val, button_command = data
-    button = create_button(root, button_text, row_val, col_val, button_command)
-    button.grid(row=row_val, column=col_val, padx=2, pady=2)
+    button = create_button(root, button_text, button_command)
+    button.grid(row=row_val, column=col_val, padx=2, pady=4)
 
 root.mainloop()
