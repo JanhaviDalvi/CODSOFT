@@ -50,40 +50,42 @@ def reset_fields():
 # Create the main window
 root = tk.Tk()
 root.title("Password Generator")
+root.geometry('400x320')
+root.resizable(False, False)
 
 # Heading
-heading_label = tk.Label(root, text="Password Generator", font=("Helvetica", 16, "bold"))
+heading_label = tk.Label(root, text="Password Generator", font=('Helvetica 15 underline'), foreground="blue")
 heading_label.grid(row=0, column=0, columnspan=2, pady=10)
 
 # Username input
-username_label = tk.Label(root, text="Username:")
+username_label = tk.Label(root, text="Enter Username:")
 username_label.grid(row=1, column=0, sticky="e", pady=5)
-username_entry = tk.Entry(root)
+username_entry = tk.Entry(root, width=30)
 username_entry.grid(row=1, column=1, pady=5, columnspan=2)
 
 # Password length input
-length_label = tk.Label(root, text="Password Length:")
+length_label = tk.Label(root, text="Enter Password Length:")
 length_label.grid(row=2, column=0, sticky="e", pady=5)
-length_entry = tk.Entry(root)
+length_entry = tk.Entry(root, width=30)
 length_entry.grid(row=2, column=1, pady=5, columnspan=2)
 
 # Generated password display
-password_label = tk.Label(root, text="Password Generated:")
+password_label = tk.Label(root, text="Generated Password:")
 password_label.grid(row=3, column=0, sticky="e", pady=5)
 password_display = tk.Text(root, height=1, width=30, state=tk.DISABLED)
 password_display.grid(row=3, column=1, pady=5, columnspan=2)
 
 # Generate button
-generate_button = tk.Button(root, text="Generate", command=generate_password)
-generate_button.grid(row=4, column=0, pady=5, columnspan=2, sticky="ew")
+generate_button = tk.Button(root, text="GENERATE PASSWORD", command=generate_password, width=15)
+generate_button.grid(row=4, column=0, padx=120, pady=10, columnspan=2, sticky="ew")
 
 # Accept button
-accept_button = tk.Button(root, text="Accept", command=accept_password)
-accept_button.grid(row=5, column=0, pady=5, columnspan=2, sticky="ew")
+accept_button = tk.Button(root, text="ACCEPT", command=accept_password, width=15)
+accept_button.grid(row=5, column=0, padx=150, pady=10, columnspan=2, sticky="ew")
 
 # Reset button
-reset_button = tk.Button(root, text="Reset", command=reset_fields)
-reset_button.grid(row=6, column=0, pady=5, columnspan=2, sticky="ew")
+reset_button = tk.Button(root, text="RESET", command=reset_fields, width=15)
+reset_button.grid(row=6, column=0, padx=150, pady=10, columnspan=2, sticky="ew")
 
 # Center the buttons
 root.grid_columnconfigure(0, weight=1)
